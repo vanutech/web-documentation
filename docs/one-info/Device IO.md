@@ -2,7 +2,7 @@
 sidebar_position: 2
 ---
 
-# Create a Document
+# Device I/O
 
 Documents are **groups of pages** connected through:
 
@@ -43,7 +43,7 @@ It is also possible to create your sidebar explicitly in `sidebars.js`:
 
 ```js title="sidebars.js"
 export default {
-  tutorialSidebar: [
+  documentationSidebar: [
     'intro',
     // highlight-next-line
     'hello',
