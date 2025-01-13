@@ -1,5 +1,7 @@
 ---
 sidebar_position: 4
+sidebar_custom_props: 
+  img: growatt.png
 ---
 
 # Growatt SPH
@@ -13,7 +15,7 @@ Prerequisite
 
 - **Zato box one**
 
-# Step 1 - Connect inverter monitoring cable
+## Step 1 - Connect inverter monitoring cable
 
 In your inverter settings. Set the RS485 port setting to VPP mode (see troubleshooting below).
 
@@ -25,12 +27,12 @@ We don't currently sell an RS485 cable for this port, but you can make your own 
 :-------------------------:|:-------------------------:
 
 
-# Step 2 - Configure zatobox to read to a Growatt SPH inverter
+## Step 2 - Configure zatobox to read to a Growatt SPH inverter
 
 
 
 
-# Troubleshooting
+## Troubleshooting
 
 If you do not get a reponse from your SPH inverter via RS485, try pins 4 and 5 instead as shown in the official Growatt SPH documentation below.
 

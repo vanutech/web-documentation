@@ -1,18 +1,14 @@
 ---
-sidebar_position: 1
+sidebar_position: 3
 ---
 
-# Introduction
+# Zatobox Plug
 
 Zato energy control is your easy to use system. It can connect to all solar inverters localy and can control devices based on import export. 
 
 ## User manuals
 
 The user manuals for all the products can be found in the sidebar or following these links:
-
-- **[One](/docs/zatobox-one):** energy manager
-- **[Plug](/docs/zatobox-plug):** smart socket
-
 
 
 

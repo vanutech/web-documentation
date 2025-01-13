@@ -2,6 +2,6 @@
 sidebar_position: 1
 ---
 
-# Connecting the device
+# App
 
 in progress
