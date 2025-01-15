@@ -4,26 +4,49 @@ sidebar_position: 3
 
 # Zatobox Plug
 
-Zato energy control is your easy to use system. It can connect to all solar inverters localy and can control devices based on import export. 
+The zatobox plug is a smartswhich that can connect to the zatobox one. This makes it can be switch by solar output.
 
-## User manuals
+<!--- nextpage -->
+### Product configuration
 
-The user manuals for all the products can be found in the sidebar or following these links:
+<img src="/img/plug-1.jpg" alt="" width="200"/>
+
+<!--- nextpage -->
+### Specifications
+
+Input voltage: 100-240V <br />
+Max current: 10A <br />
+Max power: 2200W <br />
+Frequency: 50-60Hz <br />
+Wifi: 2.4GHz <br />
+Size: ???  <br />
+
+
+<!--- nextpage -->
+### Quick setup
+
+First plug in  the zatobox plug in a powered socket. When it is powered up the LED should be flashing.
+
+Now you can add the device through the app see: **[Add device](/docs/app-info/adddevice):** 
+
+As standard for zatobox plug will have added a sensors (energy monitoring) and a actuator (switch). To the home screen it will have added a switch widget to control the plug. 
+
+
+<!--- nextpage -->
+### LED State
+
+| Device Status |  LED State |
+| -------- | ------- |
+| Pairing mode | ??? |
+| Switched on | Bright continous on |
+| Switched off | Less bright falshing slowly (10S) |
 
 
 
+<!--- nextpage -->
+### Troubleshooting
 
-### What you'll ned
+#### Reset
+To reset the wifi settings, you can push 10 seconds on the button. When succesfull the led should blink in pairing state.
 
-- [Node.js](https://nodejs.org/en/download/) version 18.0 or above:
-  - When installing Node.js, you are recommended to check all checkboxes related to dependencies.
 
-## Generate a new site
-
-Generate a new Docusaurus site using the **classic template**.
-
-The classic template will automatically be added to your project after you run the command:
-
-```bash
-npm init docusaurus@latest my-website classic
-```
