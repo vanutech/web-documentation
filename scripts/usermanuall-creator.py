@@ -48,7 +48,7 @@ async def html_to_pdf(html_content, output_path):
         await browser.close()
 
 
-def convert_markdown_to_pdf_html(markdown_file, pdf_file):
+def convert_markdown_to_pdf_html(markdown_file, pdf_file, style):
     # Read the Markdown file
     # need to install chromium with "playwright install" in command line
     with open(markdown_file, 'r', encoding='utf-8') as file:
@@ -57,6 +57,9 @@ def convert_markdown_to_pdf_html(markdown_file, pdf_file):
 
     #custom implementaion of next page
     markdown_content = markdown_content.replace('<!--- nextpage -->', '<div class="page-break"></div>')
+    #custom implementaion of next page
+    index = markdown_content.find('<!--- start -->')
+    markdown_content = markdown_content[index + len('<!--- start -->'):] if index != -1 else markdown_content
 
     # Convert Markdown to HTML
     html_content = markdown.markdown(markdown_content, extensions=['tables'])
@@ -66,31 +69,20 @@ def convert_markdown_to_pdf_html(markdown_file, pdf_file):
     #with open(html_file, 'w', encoding='utf-8') as file:
     #    file.write(html_content)
 
-    header = '''<!DOCTYPE html>
+
+    header = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Custom HTML to PDF</title>
     <style>
-        .page-break {
-            page-break-before: always;
-        }    
-        @page {
-            size: 50mm 50mm;
-            @frame content_frame {
-                left: 15pt;
-                top: 15pt;
-                right: 15pt;
-                bottom: 15pt;
-            }
-
-        }
-
+        {style}
     </style>
 </head>
 <body>
-'''
+"""
+    
     
     footer = '''</body></html> '''
 
@@ -108,20 +100,92 @@ def convert_markdown_to_pdf_html(markdown_file, pdf_file):
     # Clean up the temporary HTML file
     #os.remove(html_file)
     
-    os.startfile(pdf_file)
 
 
 
 
 
+# ==================================================================================================================
+# ==================================================================================================================
+# zatobox one quick guide
 
+size = [65,100]
+style = f"""
+        .page-break {{
+            page-break-before: always;
+        }}    
+        @page {{
+            size: {size[0]}mm {size[1]}mm;
+            @frame content_frame {{
+                left: 15pt;
+                top: 15pt;
+                right: 15pt;
+                bottom: 15pt;
+            }}
+        }}
+        table {{
+            border-collapse: collapse;
+            border: 1px solid black;
+        }}
+        th, td {{
+            padding: 0px; /* Reduced padding */
+            line-height: 1; /* Reduced line height */
+            border: 1px solid black;
+        }}
+"""
 
 # Example usage
 markdown_file = 'docs/zatobox-one.md'
 pdf_file = 'zatobox-one.pdf'
-convert_markdown_to_pdf_html(markdown_file, pdf_file)
+convert_markdown_to_pdf_html(markdown_file, pdf_file, style)
 
-# Example usage
+
+from pypdf import PdfMerger
+pdfs = ['scripts/start_zatoboxone.pdf', 'zatobox-one.pdf', 'scripts/end_zatoboxone.pdf', 'scripts/end_zatoboxone_1.pdf']
+merger = PdfMerger()
+for pdf in pdfs:
+    merger.append(pdf)
+merger.write(pdf_file)
+merger.close()
+
+
+os.startfile(pdf_file)
+
+
+
+
+# ==================================================================================================================
+# ==================================================================================================================
+# zatobox plug quick guide
+
 markdown_file = 'docs/zatobox-plug.md'
 pdf_file = 'zatobox-plug.pdf'
-convert_markdown_to_pdf_html(markdown_file, pdf_file)
+size = [50,50]
+
+style = f"""
+        .page-break {{
+            page-break-before: always;
+        }}    
+        @page {{
+            size: {size[0]}mm {size[1]}mm;
+            @frame content_frame {{
+                left: 15pt;
+                top: 15pt;
+                right: 15pt;
+                bottom: 15pt;
+            }}
+        }}
+        table {{
+            border-collapse: collapse;
+            border: 1px solid black;
+        }}
+        th, td {{
+            padding: 0px; /* Reduced padding */
+            line-height: 1; /* Reduced line height */
+            border: 1px solid black;
+        }}
+"""
+
+
+convert_markdown_to_pdf_html(markdown_file, pdf_file, style)
+os.startfile(pdf_file)

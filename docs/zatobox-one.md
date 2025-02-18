@@ -1,19 +1,35 @@
 ---
 sidebar_position: 2
 ---
-
+<!--- start -->
 # Zatobox One
 
-Zatobox one
+Zatobox one is a easy to use energy manager. Connect your digital meter and monitor your energy flows.
 
+
+<img src="/img/zatoboxone/zatobox-render.png" alt="" width="400"/>
 <!--- nextpage -->
 ### Product configuration
 
 The zatobox one has a rj45 connector which can be connected to the p1 meter with the adapter cable.
 
 
+<img src="/img/zatoboxone/zatobox-one_pinout.png" alt="" width="400"/>
+
+<br/>
+<br/>
+
 <!--- nextpage -->
-### Specifications
+
+
+
+|  Specifications |   |
+| -------- | ------- |
+| Input voltage | 5V ⎓  |
+| P1 port | 1 port |
+| Modbus | 2 ports |
+| Wifi | 2.4GHz |
+| Size | ??? |
 
 <!--- nextpage -->
 ### Quick setup
@@ -29,7 +45,22 @@ As standard for zatobox one it will have added two sensors for the main supply a
 <!--- nextpage -->
 ### LED State
 
-<!--- nextpage -->
+| Wifi Status   |  LED State  |
+| -------- | ------ |
+| Pairing mode | Continous white |
+| Connected to cloud | Flashing white |
+| Connected to wifi | ??? |
+| Error | Continous red |
+
+
+
+| Connection Status |  LED State  |
+| -------- | ------- |
+| No connections active | Continous orange |
+| Connections active | Continous green |
+| Error | Continous red |
+
+
 ### Troubleshooting
 
 

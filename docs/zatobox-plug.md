@@ -1,25 +1,31 @@
 ---
 sidebar_position: 3
 ---
-
+<!--- start -->
 # Zatobox Plug
 
-The zatobox plug is a smartswhich that can connect to the zatobox one. This makes it can be switch by solar output.
+The zatobox plug is a smartswhich that can connect to the zatobox one. It helps to monitor device energy and to manage energy flows.
 
 <!--- nextpage -->
 ### Product configuration
 
-<img src="/img/plug-1.jpg" alt="" width="200"/>
+The plug has one button with a blue light.
 
-<!--- nextpage -->
-### Specifications
+<img src="/img/zatoboxplug/plug-1.jpg" alt="" width="250"/>
 
-Input voltage: 100-240V <br />
-Max current: 10A <br />
-Max power: 2200W <br />
-Frequency: 50-60Hz <br />
-Wifi: 2.4GHz <br />
-Size: ???  <br />
+
+<br />
+<br />
+
+|  Specifications |   |
+| -------- | ------- |
+| Input voltage | 100-240V |
+| Max power | 2200W |
+| Frequency | 50-60Hz |
+| Wifi | 2.4GHz |
+| Size | ??? |
+
+
 
 
 <!--- nextpage -->
@@ -39,7 +45,8 @@ As standard for zatobox plug will have added a sensors (energy monitoring) and a
 | -------- | ------- |
 | Pairing mode | ??? |
 | Switched on | Bright continous on |
-| Switched off | Less bright falshing slowly (10S) |
+| Switched off | Less bright flashing slowly (10S) |
+| Error | Flashing fast (1S) |
 
 
 

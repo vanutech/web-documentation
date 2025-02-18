@@ -10,6 +10,10 @@ Prerequisits:
 - Enabled bleutooth on phone
 - Device powered on (LED should be flashing)
 
+Click on green plus button on the bottom right to add a device.
+
+<img src="/img/app/devicelist.png" alt="" width="150"/>
+
 Device will be automaticly detected and should be seen in list
 
 !!picture of list!!
