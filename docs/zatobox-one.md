@@ -23,7 +23,7 @@ The zatobox one has a rj45 connector which can be connected to the p1 meter with
 
 
 
-|  Specifications |   |
+|  Specifications | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  |
 | -------- | ------- |
 | Input voltage | 5V ⎓  |
 | P1 port | 1 port |

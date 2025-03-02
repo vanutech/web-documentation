@@ -17,7 +17,7 @@ The plug has one button with a blue light.
 <br />
 <br />
 
-|  Specifications |   |
+|  Specifications | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  |
 | -------- | ------- |
 | Input voltage | 100-240V |
 | Max power | 2200W |
@@ -32,7 +32,6 @@ The plug has one button with a blue light.
 ### Quick setup
 
 First plug in  the zatobox plug in a powered socket. When it is powered up the LED should be flashing.
-
 Now you can add the device through the app see: **[Add device](/docs/app-info/adddevice):** 
 
 As standard for zatobox plug will have added a sensors (energy monitoring) and a actuator (switch). To the home screen it will have added a switch widget to control the plug. 

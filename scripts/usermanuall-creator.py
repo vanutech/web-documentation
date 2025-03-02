@@ -124,14 +124,13 @@ style = f"""
             }}
         }}
         table {{
-            border-collapse: collapse;
-            border: 1px solid black;
         }}
         th, td {{
-            padding: 0px; /* Reduced padding */
+            padding: 2px;  /*Reduced padding */
             line-height: 1; /* Reduced line height */
             border: 1px solid black;
         }}
+
 """
 
 # Example usage
@@ -158,8 +157,7 @@ os.startfile(pdf_file)
 # ==================================================================================================================
 # zatobox plug quick guide
 
-markdown_file = 'docs/zatobox-plug.md'
-pdf_file = 'zatobox-plug.pdf'
+
 size = [50,50]
 
 style = f"""
@@ -180,12 +178,26 @@ style = f"""
             border: 1px solid black;
         }}
         th, td {{
-            padding: 0px; /* Reduced padding */
+            padding: 1px; /* Reduced padding */
             line-height: 1; /* Reduced line height */
             border: 1px solid black;
         }}
 """
 
 
+# Example usage
+markdown_file = 'docs/zatobox-plug.md'
+pdf_file = 'zatobox-plug.pdf'
 convert_markdown_to_pdf_html(markdown_file, pdf_file, style)
+
+
+from pypdf import PdfMerger
+pdfs = ['scripts/start_zatoboxplug.pdf', 'zatobox-plug.pdf', 'scripts/end_zatoboxplug.pdf' , 'scripts/end_zatoboxplug_2.pdf', 'scripts/end_zatoboxplug_1.pdf', 'scripts/end_zatoboxplug_3.pdf']
+merger = PdfMerger()
+for pdf in pdfs:
+    merger.append(pdf)
+merger.write(pdf_file)
+merger.close()
+
+
 os.startfile(pdf_file)

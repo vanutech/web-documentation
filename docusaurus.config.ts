@@ -74,6 +74,15 @@ const config: Config = {
             to: '/docs/zatobox-one',
             from: '/docs/manual/one',
           },
+          {
+            to: '/docs/zatobox-plug',
+            from: '/docs/manual/plug',
+          },
+          {
+            to: '/docs/app-info/appindex',
+            from: '/app-guide',
+          },
+
         ],
       },
     ],
