@@ -4,14 +4,14 @@ sidebar_position: 3
 <!--- start -->
 # Zatobox Plug
 
-The zatobox plug is a smartswhich that can connect to the zatobox one. It helps to monitor device energy and to manage energy flows.
+The Zatobox Plug is an intelligent switch designed to connect seamlessly with the Zatobox One. It enables monitoring of device energy consumption and management of energy flows.
 
 <!--- nextpage -->
 ### Product configuration
 
-The plug has one button with a blue light.
+The plug features a single button with a blue LED light.
 
-<img src="/img/zatoboxplug/plug-1.jpg" alt="" width="250"/>
+<img src="/img/zatoboxplug/plug-info.jpg" alt="" width="250"/>
 
 
 <br />
@@ -20,10 +20,10 @@ The plug has one button with a blue light.
 |  Specifications | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  |
 | -------- | ------- |
 | Input voltage | 100-240V |
-| Max power | 2200W |
+| Max power | 2500W |
 | Frequency | 50-60Hz |
 | Wifi | 2.4GHz |
-| Size | ??? |
+| Size | Ø45mm x 73mm |
 
 
 
@@ -31,10 +31,23 @@ The plug has one button with a blue light.
 <!--- nextpage -->
 ### Quick setup
 
-First plug in  the zatobox plug in a powered socket. When it is powered up the LED should be flashing.
-Now you can add the device through the app see: **[Add device](/docs/app-info/adddevice):** 
+**Plug In**: Insert the Zatobox Plug into a powered socket.
 
-As standard for zatobox plug will have added a sensors (energy monitoring) and a actuator (switch). To the home screen it will have added a switch widget to control the plug. 
+<br>
+
+**Power Up**: Once powered, the LED should start flashing.
+
+<br>
+
+<!--- nextpage -->
+**Device Addition**: Use the app to add the device [(Add device)](/docs/app-info/adddevice). By default, the Zatobox Plug includes:<br>
+ Sensors for energy monitoring.<br>
+ An actuator for switching.
+
+<br>
+
+**Home Screen Widget**: A switch widget will be added to the home screen for controlling the plug.
+
 
 
 <!--- nextpage -->
@@ -42,10 +55,10 @@ As standard for zatobox plug will have added a sensors (energy monitoring) and a
 
 | Device Status |  LED State |
 | -------- | ------- |
-| Pairing mode | ??? |
-| Switched on | Bright continous on |
-| Switched off | Less bright flashing slowly (10S) |
-| Error | Flashing fast (1S) |
+| Pairing mode | Dimming on/off |
+| Relay closed | Continous on |
+| Relay open | Dimly flashing (3s) |
+| Error | Flashing fast (1s) |
 
 
 
@@ -53,6 +66,4 @@ As standard for zatobox plug will have added a sensors (energy monitoring) and a
 ### Troubleshooting
 
 #### Reset
-To reset the wifi settings, you can push 10 seconds on the button. When succesfull the led should blink in pairing state.
-
-
+Press and hold the button for 10 seconds. If successful, the LED will blink in pairing mode.

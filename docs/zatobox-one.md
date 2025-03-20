@@ -4,17 +4,15 @@ sidebar_position: 2
 <!--- start -->
 # Zatobox One
 
-Zatobox one is a easy to use energy manager. Connect your digital meter and monitor your energy flows.
+The Zatobox One is an intuitive energy manager designed for ease of use. By connecting your digital meter, you can efficiently monitor your energy flows.
 
-
-<img src="/img/zatoboxone/zatobox-render.png" alt="" width="400"/>
+<img src="/img/zatoboxone/P1metkabel_frontlefttop-info.png" alt="" width="300" /> 
 <!--- nextpage -->
 ### Product configuration
 
-The zatobox one has a rj45 connector which can be connected to the p1 meter with the adapter cable.
+The Zatobox One features an RJ45 connector, which can be connected to the P1 meter using an adapter cable.
 
-
-<img src="/img/zatoboxone/zatobox-one_pinout.png" alt="" width="400"/>
+<img src="/img/zatoboxone/zatobox-one_pinout.png" alt="" width="300"/>
 
 <br/>
 <br/>
@@ -25,22 +23,24 @@ The zatobox one has a rj45 connector which can be connected to the p1 meter with
 
 |  Specifications | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  |
 | -------- | ------- |
-| Input voltage | 5V ⎓  |
+| Input voltage | 5V DC   |
 | P1 port | 1 port |
 | Modbus | 2 ports |
 | Wifi | 2.4GHz |
-| Size | ??? |
+| Size | 81x31x23mm |
 
-<!--- nextpage -->
+
 ### Quick setup
 
-First connect the zatobox one to power. This can be done through the p1 port or seperated charger via the side usb c port.
+**Power Connection**: Connect the Zatobox One to a power source. This can be done through the P1 port or via a separate charger using the side USB-C port.
+<br/>
 
-When it is powered up the LED should be flashing.
+**Power Up**: Once powered, the LED should start flashing.
+<br/>
 
-Now you can add the device through the app see: **[Add device](/docs/app-info/adddevice):** 
+**Device Addition**: Use the app to add the device **[(Add device)](/docs/app-info/adddevice)**. By default, the Zatobox One includes:<br/>
+Two sensors for monitoring the main supply and gas supply.
 
-As standard for zatobox one it will have added two sensors for the main supply and gas supply. 
 
 <!--- nextpage -->
 ### LED State
@@ -49,10 +49,9 @@ As standard for zatobox one it will have added two sensors for the main supply a
 | -------- | ------ |
 | Pairing mode | Continous white |
 | Connected to cloud | Flashing white |
-| Connected to wifi | ??? |
 | Error | Continous red |
 
-
+<br/>
 
 | Connection Status |  LED State  |
 | -------- | ------- |
@@ -61,10 +60,10 @@ As standard for zatobox one it will have added two sensors for the main supply a
 | Error | Continous red |
 
 
+<!--- nextpage -->
 ### Troubleshooting
 
 
 #### Reset
 
-To reset the wifi settings, you can push 10 seconds on the button. When succesfull the led should blink in pairing state.
-
+Press and hold the button for 10 seconds. If successful, the LED will blink in pairing mode.

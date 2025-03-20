@@ -6,49 +6,45 @@ import os
 import asyncio
 from playwright.async_api import async_playwright
 
-from xhtml2pdf import pisa
 
-def convert_html_to_pdf(html_string, pdf_path):
-
-  with open(pdf_path, "wb") as pdf_file:
-    pisa_status = pisa.CreatePDF(html_string, dest=pdf_file)
-  return not pisa_status.err
-
-
-async def html_to_pdf(html_content, output_path):
+async def html_to_pdf(html_content, output_path, width, height):
     async with async_playwright() as p:
         browser = await p.chromium.launch()
         page = await browser.new_page()
         await page.set_content(html_content)
 
-        # Inject CSS to set the margin of the page
-        await page.evaluate("""
-            () => {
-                const style = document.createElement('style');
-                style.innerHTML = `
-                    body {
-                        margin: 30px
-                    }
-                `;
-                document.head.appendChild(style);
-            }
-        """)
-        # Ensure all resources are loaded
-        await page.wait_for_load_state('networkidle')
+        # # Inject CSS to set the margin of the page
+        # await page.evaluate("""
+        #     () => {
+        #         const style = document.createElement('style');
+        #         style.innerHTML = `
+        #             body {
+        #                 margin: 30px
+        #             }
+        #         `;
+        #         document.head.appendChild(style);
+        #     }
+        # """)
+        # # Ensure all resources are loaded
+        # await page.wait_for_load_state('networkidle')
         
-        # Emulate media type
-        await page.emulate_media(media='screen')
-        # Set viewport size
-        await page.set_viewport_size({'width': 1024, 'height': 768})
+        # # Emulate media 
+        pdf_margins = {
+            'top': '4mm',
+            'right': '4mm',
+            'bottom': '4mm',
+            'left': '4mm'
+        }
 
         await page.pdf(path=output_path, 
-                       width='5in', 
-                       height='5in',
+                       margin=pdf_margins,
+                       width=f"{width}mm", 
+                       height=f"{height}mm", 
                        print_background=True,)
         await browser.close()
 
-
-def convert_markdown_to_pdf_html(markdown_file, pdf_file, style):
+import re
+def convert_markdown_to_pdf_html(markdown_file, pdf_file, style, width, height):
     # Read the Markdown file
     # need to install chromium with "playwright install" in command line
     with open(markdown_file, 'r', encoding='utf-8') as file:
@@ -61,14 +57,25 @@ def convert_markdown_to_pdf_html(markdown_file, pdf_file, style):
     index = markdown_content.find('<!--- start -->')
     markdown_content = markdown_content[index + len('<!--- start -->'):] if index != -1 else markdown_content
 
+    ##remove all markdown links
+    #pattern = re.compile(f'{re.escape('**')}.*?{re.escape('**')}')
+    #pattern = re.compile(r'\[\*\*\]\(\*\*\)')
+    #markdown_content = re.sub(pattern, '', markdown_content) 
+
     # Convert Markdown to HTML
     html_content = markdown.markdown(markdown_content, extensions=['tables'])
 
-    html_content = html_content.replace('src="', 'src="static')
+    #html_content = html_content.replace('src="', 'src="static')
+    html_content = html_content.replace('src="', 'src="https://web-documentation.zatobox.com/')
+
     #html_file = "index.html"
     #with open(html_file, 'w', encoding='utf-8') as file:
     #    file.write(html_content)
+    # Define the pattern to match <a href="/docs/app-info/adddevice">(Add device)</a>
+    pattern = re.compile(r'<a href=".*?">\(.*?\)</a>')
 
+    # Remove the pattern from the markdown content
+    html_content = re.sub(pattern, '', html_content)
 
     header = f"""<!DOCTYPE html>
 <html lang="en">
@@ -92,13 +99,7 @@ def convert_markdown_to_pdf_html(markdown_file, pdf_file, style):
         os.remove(pdf_file)
 
     # Convert HTML to PDF
-    #asyncio.run(html_to_pdf(html_content, pdf_file))
-    # Run create_pdf_from_html
-    #asyncio.get_event_loop().run_until_complete(create_pdf_from_html(html_content, 'from_html.pdf'))
-    convert_html_to_pdf(html_content, pdf_file)
-
-    # Clean up the temporary HTML file
-    #os.remove(html_file)
+    asyncio.run( html_to_pdf(html_content, pdf_file,  width, height))
     
 
 
@@ -109,34 +110,46 @@ def convert_markdown_to_pdf_html(markdown_file, pdf_file, style):
 # ==================================================================================================================
 # zatobox one quick guide
 
-size = [65,100]
+
 style = f"""
         .page-break {{
             page-break-before: always;
         }}    
-        @page {{
-            size: {size[0]}mm {size[1]}mm;
-            @frame content_frame {{
-                left: 15pt;
-                top: 15pt;
-                right: 15pt;
-                bottom: 15pt;
+        
+        tbody {{
+            font-family: 'Hervena', sans-serif;
+        }}
+        h1, h2, h3{{
+            font-family: 'Hervena', sans-serif;
+        }}
+        p {{
+            font-family: 'Hervena', sans-serif;
+        }}
+
+        table {{ 
+            border-collapse: collapse;
+            box-shadow: 0 5px 10px #E0E0E0;
+            thead {{ 
+                box-shadow: 0 5px 10px #E0E0E0;
+            }}
+            tbody {{ 
+                tr:nth-child(even) {{ 
+                    background: #E0E0E0;
+                }}
             }}
         }}
-        table {{
-        }}
+        
         th, td {{
-            padding: 2px;  /*Reduced padding */
-            line-height: 1; /* Reduced line height */
-            border: 1px solid black;
+            padding: 4px;  
         }}
 
 """
 
+
 # Example usage
 markdown_file = 'docs/zatobox-one.md'
 pdf_file = 'zatobox-one.pdf'
-convert_markdown_to_pdf_html(markdown_file, pdf_file, style)
+convert_markdown_to_pdf_html(markdown_file, pdf_file, style, 65,100)
 
 
 from pypdf import PdfMerger
@@ -164,31 +177,47 @@ style = f"""
         .page-break {{
             page-break-before: always;
         }}    
-        @page {{
-            size: {size[0]}mm {size[1]}mm;
-            @frame content_frame {{
-                left: 15pt;
-                top: 15pt;
-                right: 15pt;
-                bottom: 15pt;
+
+        tbody {{
+            font-family: 'Hervena', sans-serif;
+        }}
+        h1, h2, h3{{
+            font-family: 'Hervena', sans-serif;
+        }}
+        p {{
+            font-family: 'Hervena', sans-serif;
+        }}
+        table {{ 
+            border-collapse: collapse;
+            box-shadow: 0 5px 10px #E0E0E0;
+            thead {{ 
+                box-shadow: 0 5px 10px #E0E0E0;
+            }}
+            tbody {{ 
+                tr:nth-child(even) {{ 
+                    background: #E0E0E0;
+                }}
             }}
         }}
-        table {{
-            border-collapse: collapse;
-            border: 1px solid black;
-        }}
+        
         th, td {{
-            padding: 1px; /* Reduced padding */
-            line-height: 1; /* Reduced line height */
-            border: 1px solid black;
+            padding: 4px;  
+            font-size: 14px
         }}
+
+      ol {{
+        padding-left: 0; /* Remove padding */
+    margin-left: 0;  /* Remove margin */
+    list-style-position: inside; /* Ensure list style is inside the list item */
+            }}
+
 """
 
 
 # Example usage
 markdown_file = 'docs/zatobox-plug.md'
 pdf_file = 'zatobox-plug.pdf'
-convert_markdown_to_pdf_html(markdown_file, pdf_file, style)
+convert_markdown_to_pdf_html(markdown_file, pdf_file, style, 50,50)
 
 
 from pypdf import PdfMerger
