@@ -17,8 +17,8 @@ const config: Config = {
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'Zato', // Usually your GitHub org/user name.
-  projectName: 'zato', // Usually your repo name.
+  organizationName: 'Zatobox', // Usually your GitHub org/user name.
+  projectName: 'zatobox', // Usually your repo name.
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -92,7 +92,7 @@ const config: Config = {
     // Replace with your project's social card
     image: 'img/docusaurus-social-card.jpg',
     navbar: {
-      title: 'Zato',
+      title: 'Zato box',
       logo: {
         alt: 'Zato Logo',
         src: 'img/logo.svg',
@@ -106,8 +106,8 @@ const config: Config = {
         },
         {to: '/blog', label: 'Blog', position: 'left'},
         {
-          href: 'https://github.com/vanutech/web-documentation',
-          label: 'GitHub',
+          href: 'https://zatobox.com',
+          label: 'Zatobox Website',
           position: 'right',
         },
       ],
@@ -125,20 +125,12 @@ const config: Config = {
           ],
         },
         {
-          title: 'Community',
+          title: 'Zatobox',
           items: [
             {
-              label: 'Stack Overflow',
-              href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-            },
-            {
-              label: 'Discord',
-              href: 'https://discordapp.com/invite/docusaurus',
-            },
-            {
-              label: 'X',
-              href: 'https://x.com/docusaurus',
-            },
+              label: 'website',
+              href: 'https://zatobox.com',
+            }
           ],
         },
         {
@@ -150,7 +142,7 @@ const config: Config = {
             },
             {
               label: 'GitHub',
-              href: 'https://github.com/facebook/docusaurus',
+              href: 'https://github.com/vanutech/protocol-hub',
             },
           ],
         },

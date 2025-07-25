@@ -1,8 +1,8 @@
 ---
-sidebar_position: 2
+title: Zatobox One
+sidebar_position: 3
 ---
 <!--- start -->
-# Zatobox One
 
 The Zatobox One is an intuitive energy manager designed for ease of use. By connecting your digital meter, you can efficiently monitor your energy flows.
 
@@ -62,7 +62,6 @@ Two sensors for monitoring the main supply and gas supply.
 
 <!--- nextpage -->
 ### Troubleshooting
-
 
 #### Reset
 

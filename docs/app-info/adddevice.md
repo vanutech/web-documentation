@@ -2,7 +2,7 @@
 sidebar_position: 2
 ---
 
-# How to add a Device?
+# How to add a zatobox Device?
 
 A device can only be added through the android or ios app. 
 

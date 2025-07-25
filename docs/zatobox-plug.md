@@ -1,8 +1,8 @@
 ---
-sidebar_position: 3
+title: Zatobox Plug
+sidebar_position: 4
 ---
 <!--- start -->
-# Zatobox Plug
 
 The Zatobox Plug is an intelligent switch designed to connect seamlessly with the Zatobox One. It enables monitoring of device energy consumption and management of energy flows.
 
@@ -33,18 +33,18 @@ The plug features a single button with a blue LED light.
 
 **Plug In**: Insert the Zatobox Plug into a powered socket.
 
-<br>
+<br/>
 
 **Power Up**: Once powered, the LED should start flashing.
 
-<br>
+<br/>
 
 <!--- nextpage -->
-**Device Addition**: Use the app to add the device [(Add device)](/docs/app-info/adddevice). By default, the Zatobox Plug includes:<br>
- Sensors for energy monitoring.<br>
+**Device Addition**: Use the app to add the device [(Add device)](/docs/app-info/adddevice). By default, the Zatobox Plug includes:<br/>
+ Sensors for energy monitoring.<br/>
  An actuator for switching.
 
-<br>
+<br/>
 
 **Home Screen Widget**: A switch widget will be added to the home screen for controlling the plug.
 
