@@ -71,15 +71,15 @@ const config: Config = {
         redirects: [
           // /docs/oldDoc -> /docs/newDoc
           {
-            to: '/docs/zatobox-one',
+            to: '/docs/usermanuals/zatobox-one',
             from: '/docs/manual/one',
           },
           {
-            to: '/docs/zatobox-plug',
+            to: '/docs/usermanuals/zatobox-plug',
             from: '/docs/manual/plug',
           },
           {
-            to: '/docs/app-info/appindex',
+            to: '/docs/usermanuals/app-info/appindex',
             from: '/app-guide',
           },
 
@@ -104,6 +104,16 @@ const config: Config = {
           position: 'left',
           label: 'Documentation',
         },
+        { type: "docSidebar",
+          label: 'Integrations', 
+          position: 'left',
+          sidebarId: 'integrationSidebar',
+        },
+        { type: "docSidebar",
+          label: 'Developer', 
+          position: 'left',
+          sidebarId: 'developerSidebar',
+        },
         {to: '/blog', label: 'Blog', position: 'left'},
         {
           href: 'https://zatobox.com',
@@ -120,7 +130,7 @@ const config: Config = {
           items: [
             {
               label: 'Documentation',
-              to: '/docs/intro',
+              to: '/docs/usermanuals/intro',
             },
           ],
         },

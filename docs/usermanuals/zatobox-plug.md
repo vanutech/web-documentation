@@ -40,7 +40,7 @@ The plug features a single button with a blue LED light.
 <br/>
 
 <!--- nextpage -->
-**Device Addition**: Use the app to add the device [(Add device)](/docs/app-info/adddevice). By default, the Zatobox Plug includes:<br/>
+**Device Addition**: Use the app to add the device [(Add device)](/docs/usermanuals/app-info/adddevice). By default, the Zatobox Plug includes:<br/>
  Sensors for energy monitoring.<br/>
  An actuator for switching.
 

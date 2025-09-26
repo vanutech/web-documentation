@@ -27,7 +27,7 @@ We don't currently sell an RS485 cable for this port, but you can make your own 
 :-------------------------:|:-------------------------:
 
 
-#### Step 2 - Configure zatobox to read to a Growatt SPH inverter
+#### Step 2 - Configure zatobox to monitor a Growatt SPH inverter
 
 
 

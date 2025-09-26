@@ -10,8 +10,8 @@ Zato energy control is your easy to use system. It can connect to all solar inve
 
 The user manuals for all the products can be found in the sidebar or with these links:
 
-- **[One](/docs/zatobox-one):** energy manager
-- **[Plug](/docs/zatobox-plug):** smart socket
+- **[One](/docs/usermanuals/zatobox-one):** energy manager
+- **[Plug](/docs/usermanuals/zatobox-plug):** smart socket
 
 
 
@@ -19,4 +19,4 @@ The user manuals for all the products can be found in the sidebar or with these 
 
 The app can be downloaded through the app store and play store. Search zatobox in the respective stores.
 
-Instructions for the app can be found here: **[App setup](/docs/app-info/appindex)** 
+Instructions for the app can be found here: **[App setup](/docs/usermanuals/app-info/appindex)** 

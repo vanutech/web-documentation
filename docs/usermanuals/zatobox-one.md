@@ -38,7 +38,7 @@ The Zatobox One features an RJ45 connector, which can be connected to the P1 met
 **Power Up**: Once powered, the LED should start flashing.
 <br/>
 
-**Device Addition**: Use the app to add the device **[(Add device)](/docs/app-info/adddevice)**. By default, the Zatobox One includes:<br/>
+**Device Addition**: Use the app to add the device **[(Add device)](/docs/usermanuals/app-info/adddevice)**. By default, the Zatobox One includes:<br/>
 Two sensors for monitoring the main supply and gas supply.
 
 

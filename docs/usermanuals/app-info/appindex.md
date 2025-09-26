@@ -22,7 +22,7 @@ Select to create a new home. Select the location of your home. This is needed so
 <img src="/img/app/setup home.png" alt="" width="150"/> 
 <img src="/img/app/select location.png" alt="" width="150"/> 
 
-Lastly choose a name and create your home. On the home screen you should see a button to add a new device or you can go to the device tab and click the green plus button to add a device, more info in the **[add device chapter](/docs/app-info/adddevice)** 
+Lastly choose a name and create your home. On the home screen you should see a button to add a new device or you can go to the device tab and click the green plus button to add a device, more info in the **[add device chapter](/docs/usermanuals/app-info/adddevice)** 
 
 ## App layout
 

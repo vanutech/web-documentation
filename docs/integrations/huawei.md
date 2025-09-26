@@ -42,7 +42,7 @@ The Slave ID should be identical to the Com address set in the RS485_1 settings.
 
 Go to the device tab and push the plus button to add an extra device. Choose Huawei sun2000 from the list. If you have a battery attached you can choose the battery variant.
 
-More information how to add 3rd party devices with the APP [link](/docs/app-info/add-connecteddevice).
+More information how to add 3rd party devices with the APP [link](/docs/usermanuals/app-info/add-connecteddevice).
 
 *********** picture of connection settings
 
