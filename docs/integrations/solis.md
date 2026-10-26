@@ -14,7 +14,7 @@ Compatible inverters for the instruction below.
 Prerequisite
 
 
-- **Zato box one**
+- **Zatobox one**
 - **[Solis inverter cable](https://zatobox.com/product/solis-cable/)**
 
 

@@ -8,6 +8,7 @@ import Heading from '@theme/Heading';
 
 import styles from './index.module.css';
 import Integrations from '@site/src/components/Integrations';
+import ZatoboxProducts from '@site/src/components/ZatoboxProducts';
 
 function HomepageHeader() {
   const {siteConfig} = useDocusaurusContext();
@@ -18,13 +19,6 @@ function HomepageHeader() {
           {siteConfig.title}
         </Heading>
         <p className="hero__subtitle">{siteConfig.tagline}</p>
-        <div className={styles.buttons}>
-          <Link
-            className="button button--secondary button--lg"
-            to="/docs/usermanuals/intro">
-            Get started with zatobox
-          </Link>
-        </div>
       </div>
     </header>
   );
@@ -42,16 +36,14 @@ export default function Home(): ReactNode {
       <main>
         <HomepageFeatures />
 
+        <ZatoboxProducts />
 
+        <h2 style={{ textAlign: 'center', marginBottom: '2rem' }}>
+          Integrations
+        </h2>
         
-      <h2 style={{ textAlign: 'center', marginBottom: '2rem' }}>
-        Integrations
-      </h2>
-              
         <Integrations />
 
-  
-        
       </main>
     </Layout>
   );

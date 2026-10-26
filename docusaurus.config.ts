@@ -5,7 +5,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 const config: Config = {
-  title: 'Zato box',
+  title: 'Zatobox',
   tagline: 'Smart energy control',
   favicon: 'img/favicon.ico',
 
@@ -92,7 +92,7 @@ const config: Config = {
     // Replace with your project's social card
     image: 'img/docusaurus-social-card.jpg',
     navbar: {
-      title: 'Zato box',
+      title: 'Zatobox',
       logo: {
         alt: 'Zato Logo',
         src: 'img/logo.svg',
@@ -157,7 +157,7 @@ const config: Config = {
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} Zato box`,
+      copyright: `Copyright © ${new Date().getFullYear()} Zatobox`,
     },
     prism: {
       theme: prismThemes.github,

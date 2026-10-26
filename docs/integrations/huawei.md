@@ -6,13 +6,13 @@ sidebar_custom_props:
 ---
 
 
-Instruction to connect a huawei sun2000 inverter to the  **Zato box** system. 
+Instruction to connect a huawei sun2000 inverter to the  **Zatobox** system. 
 
 - Huawei SUN2000 l1 (with or withour battery)
 - Huawei SUN2000 m1 (with or withour battery)
 
 Prerequisite
-- **Zato box one**
+- **Zatobox one**
 - **Generic RJ45 cable**
 - **USB-A to USB-C cable**
 

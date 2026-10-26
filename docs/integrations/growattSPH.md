@@ -6,14 +6,14 @@ sidebar_custom_props:
 
 # Growatt SPH
 
-Read the instruction below on how to connect a growatt inverter to **Zato box** system.
+Read the instruction below on how to connect a growatt inverter to **Zatobox** system.
 
 - Growatt SPH single phase
 - Growatt SPH 3 phase
 
 Prerequisite
 
-- **Zato box one**
+- **Zatobox one**
 
 #### Step 1 - Connect inverter monitoring cable
 
