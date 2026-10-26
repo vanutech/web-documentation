@@ -71,15 +71,19 @@ const config: Config = {
         redirects: [
           // /docs/oldDoc -> /docs/newDoc
           {
-            to: '/docs/usermanuals/zatobox-one',
+            to: '/docs/product/zatobox-one',
             from: '/docs/manual/one',
           },
           {
-            to: '/docs/usermanuals/zatobox-plug',
+            to: '/docs/product/zatobox-plug',
             from: '/docs/manual/plug',
           },
           {
-            to: '/docs/usermanuals/app-info/appindex',
+            to: '/docs/product/zatobox-energy-adapter',
+            from: '/docs/manual/energyadapter',
+          },
+          {
+            to: '/docs/app-setup/appindex',
             from: '/app-guide',
           },
 

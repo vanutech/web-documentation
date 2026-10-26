@@ -2,40 +2,30 @@
 
 This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator.
 
-### Installation
 
-```
-$ yarn
-```
+### Setup first time 
+npx create-docusaurus@latest my-website classic
 
-### Local Development
 
-```
-$ yarn start
-```
+### Start site localy
+npx docusaurus start
 
-This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
 
-### Build
+### Build static
+npm run build
 
-```
-$ yarn build
-```
 
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
 
-### Deployment
+## URL used in qr codes in ohter manuals
 
-Using SSH:
+https://web-documentation.zatobox.com/app-guide  -> docs/app-setup/appindex
 
-```
-$ USE_SSH=true yarn deploy
-```
+https://web-documentation.zatobox.com -> to main 
 
-Not using SSH:
+url from store
 
-```
-$ GIT_USER=<Your GitHub username> yarn deploy
-```
-
-If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
+https://web-documentation.zatobox.com/docs/manual/one ->  /docs/product/zatobox-one
+https://web-documentation.zatobox.com/docs/manual/plug ->  /docs/product/zatobox-plug
+https://web-documentation.zatobox.com/docs/manual/energyadapter ->  /docs/product/zatobox-energy-adapter
+          
+          
