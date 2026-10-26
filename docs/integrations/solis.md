@@ -30,6 +30,6 @@ The inverter connection provides the power so the Zatobox one should immediately
 
 Go to the device tab and push the plus button to add an extra device. Choose Solis rhi/rai from the list.
 
-More information how to add 3rd party devices with the APP [link](/docs/usermanuals/app-info/add-connecteddevice).
+More information how to add 3rd party devices with the APP [link](/docs/app-setup/add-connecteddevice).
 
 *********** picture of connection settings

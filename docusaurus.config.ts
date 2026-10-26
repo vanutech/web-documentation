@@ -100,9 +100,15 @@ const config: Config = {
       items: [
         {
           type: 'docSidebar',
-          sidebarId: 'documentationSidebar',
+          sidebarId: 'productsSidebar',
           position: 'left',
-          label: 'Documentation',
+          label: 'Products',
+        },
+        {
+          type: 'docSidebar',
+          sidebarId: 'appSidebar',
+          position: 'left',
+          label: 'App & Setup',
         },
         { type: "docSidebar",
           label: 'Integrations', 
@@ -129,8 +135,12 @@ const config: Config = {
           title: 'Docs',
           items: [
             {
-              label: 'Documentation',
-              to: '/docs/usermanuals/intro',
+              label: 'Products',
+              to: '/docs/product/zatobox-one',
+            },
+            {
+              label: 'App & Setup',
+              to: '/docs/app-setup/appindex',
             },
           ],
         },

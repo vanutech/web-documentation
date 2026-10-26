@@ -37,7 +37,7 @@ The Zatobox Energy Adapter features multiple connectivity options for different 
 **Power Up**: Once powered, the LED should indicate the device is ready.
 <br/>
 
-**Device Addition**: Use the app to add the device **[(Add device)](/docs/usermanuals/app-info/adddevice)**.
+**Device Addition**: Use the app to add the device **[(Add device)](/docs/app-setup/adddevice)**.
 
 
 <!--- nextpage -->

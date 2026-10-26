@@ -13,17 +13,17 @@ const zatoboxProductsList: ProductItem[] = [
   {
     title: 'Zatobox One',
     logo: '/img/zatoboxone/zatobox-render.png',
-    link: '/docs/usermanuals/zatobox-one'
+    link: '/docs/product/zatobox-one'
   },
   {
     title: 'Zatobox Plug',
     logo: '/img/zatoboxplug/plug-info.jpg',
-    link: '/docs/usermanuals/zatobox-plug'
+    link: '/docs/product/zatobox-plug'
   },
   {
     title: 'Zatobox Energy Adapter',
     logo: '/img/zatoboxone/zatobox-render.png',
-    link: '/docs/usermanuals/zatobox-energy-adapter'
+    link: '/docs/product/zatobox-energy-adapter'
   },
 ];
 
