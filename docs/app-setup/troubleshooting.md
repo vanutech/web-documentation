@@ -7,7 +7,7 @@ sidebar_position: 3
 ## What when the device is not powering on when connected to P1 port?
 
 Check if the P1 port is activated:
-- Activating the port through: see [P1 port information](/docs/app-setup/p1port-information)
+- Activating the port through: see [P1 port information](/docs/integrations/p1-port)
 
 ## What should I do when device contiguration process has failed?
 You could :

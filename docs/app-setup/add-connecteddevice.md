@@ -2,7 +2,7 @@
 sidebar_position: 3
 ---
 
-# How to add a 3rd party Device?
+# Home add/connect integration
 
 A 3rd party device can be added through the app and web. 
 
@@ -13,7 +13,13 @@ Prerequisits:
 
 Go to the device tab and push the plus button to add an extra device. Choose the device you want to add from the list. 
 
+
+<img src="/img/app/integration_device_list.png" alt="" width="150"/>
+
 After creating the device, link it to a zatobox device.
+
+
+<img src="/img/app/connect integration.png" alt="" width="150"/>
 
 Make sure the connection on the respective zatobox device is activated else it won't work. 
 

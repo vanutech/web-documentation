@@ -12,24 +12,34 @@ type IntegrationItem = {
 
 const Integrationslist: IntegrationItem[] = [
   {
-    title: 'Easy to Use',
+    title: 'Huawei SUN2000',
     logo: '/img/logos/huawei.png',
     link: '/docs/integrations/huawei'
   },
   {
-    title: 'Focus on What Matters',
+    title: 'Goodwe',
     logo: '/img/logos/goodwe.png',
     link: '/docs/integrations/goodwe'
   },
   {
-    title: 'Focus on What Matters',
+    title: 'Solis',
     logo: '/img/logos/solis.png',
     link: '/docs/integrations/solis'
   },
   {
-    title: 'Focus on What Matters',
+    title: 'Growatt SPH',
     logo: '/img/logos/growatt.png',
     link: '/docs/integrations/growattSPH'
+  },
+  {
+    title: 'P1 Port',
+    logo: '/img/logos/p1-port.svg',
+    link: '/docs/integrations/p1-port'
+  },
+  {
+    title: 'S1 Port',
+    logo: '/img/logos/s1-port.svg',
+    link: '/docs/integrations/s1-port'
   },
 ];
 

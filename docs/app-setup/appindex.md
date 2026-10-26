@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# App first setup 
+# Home first setup 
 
 The zatobox app can be installed from both app store (ios) and play store(android).
 
