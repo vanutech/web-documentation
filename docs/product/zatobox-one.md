@@ -15,12 +15,8 @@ The Zatobox One features an RJ45 connector, which can be connected to the P1 met
 <img src="/img/zatoboxone/zatobox-one_pinout.png" alt="" width="300"/>
 
 
-| RJ45 pinout |  |
-|---------------|-------------|
-| 1. RS485 A1 | 5. RS485 B2 |
-| 2. RS485 B1 | 6. GND |
-| 3. GND | 7. 5V |
-| 4. P1port, RS485 A2 | 8. 5V |
+
+<img src="/img/zatoboxone/pinouttable.png" alt="" width="300"/>
 
 <br/>
 <br/>
@@ -28,6 +24,7 @@ The Zatobox One features an RJ45 connector, which can be connected to the P1 met
 <!--- nextpage -->
 
 
+### Specifications
 
 | Specifications |  |
 |---------------|--|

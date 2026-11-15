@@ -7,18 +7,19 @@ sidebar_position: 2
 
 The Energy Adapter configuration tool is located in the Zatobox app.
 
-## Setup Steps
+## Configuration Setup
 
-### Prerequisites
-- Make sure Bluetooth is active on your mobile device
-- Ensure the Energy Adapter device is powered on
+Before starting make sure the Zatobox energy adapter is connected correctly.
 
 ### Connecting the Energy Adapter
 
-1. Open the Zatobox app
-2. Navigate to the Energy Adapter configuration section
-3. Scan the QR code on the Energy Adapter device
-4. Wait for the connection to establish
+1. Open the Zatobox app 
+2. Login with existing professional account or register new account
+3. Navigate to the Energy Adapter configuration section
+4. Scan the QR code on the Energy Adapter device
+5. Push connect if succes configuration will show
+   1. Make sure Bluetooth is active on your mobile device
+   2. Ensure the Energy Adapter device is powered on
 
 ### Configuration
 
