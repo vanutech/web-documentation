@@ -1,60 +1,13 @@
 import type {ReactNode} from 'react';
-import {useState} from 'react';
+import {useState, useMemo} from 'react';
 import clsx from 'clsx';
-import Heading from '@theme/Heading';
 import styles from './styles.module.css';
-
-type IntegrationItem = {
-  title: string;
-  logo: string;
-  link: string;
-  labels: string[];
-};
-
-const Integrationslist: IntegrationItem[] = [
-  {
-    title: 'Huawei SUN2000',
-    logo: '/img/logos/huawei.png',
-    link: '/docs/integrations/huawei',
-    labels: ['Inverter', 'Solar', 'Huawei', 'RS485']
-  },
-  {
-    title: 'Goodwe',
-    logo: '/img/logos/goodwe.png',
-    link: '/docs/integrations/goodwe',
-    labels: ['Inverter', 'Solar', 'Goodwe']
-  },
-  {
-    title: 'Solis',
-    logo: '/img/logos/solis.png',
-    link: '/docs/integrations/solis',
-    labels: ['Inverter', 'Solar', 'Solis', 'RS485']
-  },
-  {
-    title: 'Growatt SPH',
-    logo: '/img/logos/growatt.png',
-    link: '/docs/integrations/growattSPH',
-    labels: ['Inverter', 'Solar', 'Growatt', 'RS485']
-  },
-  {
-    title: 'Eastron Meter',
-    logo: '/img/logos/eastron.png',
-    link: '/docs/integrations/eastron_meter',
-    labels: ['Meter', 'Energy Monitoring', 'RS485', 'Eastron']
-  },
-  {
-    title: 'P1 Port',
-    logo: '/img/logos/p1-port.svg',
-    link: '/docs/integrations/p1-port',
-    labels: ['Meter', 'Digital Meter', 'P1', 'Energy Monitoring']
-  },
-  {
-    title: 'S1 Port',
-    logo: '/img/logos/s1-port.svg',
-    link: '/docs/integrations/s1-port',
-    labels: ['Meter', 'Digital Meter', 'S1', 'Energy Monitoring']
-  },
-];
+import {
+  getAllIntegrations,
+  getAllLabels,
+  filterIntegrationsByLabels,
+  type IntegrationItem
+} from '../../hooks/useIntegrations';
 
 function Integration({title, logo, link, labels}: IntegrationItem) {
   return (
@@ -90,7 +43,7 @@ function Integration({title, logo, link, labels}: IntegrationItem) {
         >
           <img
             src={logo}
-            alt={logo}
+            alt={title}
             style={{
               width: '150px',
               height: 'auto',
@@ -178,18 +131,14 @@ function FilterControls({
 
 
 export default function Integrations(): ReactNode {
+  const allIntegrations = getAllIntegrations();
+  const allLabels = getAllLabels();
   const [selectedLabels, setSelectedLabels] = useState<string[]>([]);
   
-  // Get all unique labels from all integrations
-  const allLabels: string[] = Array.from(
-    new Set(Integrationslist.flatMap(integration => integration.labels))
-  ).sort();
-  
-  const filteredIntegrations = selectedLabels.length === 0
-    ? Integrationslist
-    : Integrationslist.filter(integration =>
-        selectedLabels.some(selectedLabel => integration.labels.includes(selectedLabel))
-      );
+  const filteredIntegrations = useMemo(
+    () => filterIntegrationsByLabels(allIntegrations, selectedLabels),
+    [selectedLabels]
+  );
   
   const handleToggleLabel = (label: string) => {
     if (label === '') {

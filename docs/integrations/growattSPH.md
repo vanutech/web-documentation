@@ -1,4 +1,5 @@
 ---
+title: Growatt SPH
 sidebar_position: 4
 sidebar_custom_props: 
   img: growatt.png

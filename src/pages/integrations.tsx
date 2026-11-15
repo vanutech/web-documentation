@@ -1,76 +1,15 @@
 import type {ReactNode} from 'react';
-import {useState} from 'react';
+import {useState, useMemo} from 'react';
 import clsx from 'clsx';
 import Layout from '@theme/Layout';
 import Heading from '@theme/Heading';
-
-type IntegrationItem = {
-  title: string;
-  logo: string;
-  link: string;
-  labels: string[];
-  description?: string;
-};
-
-const IntegrationsList: IntegrationItem[] = [
-  {
-    title: 'Huawei SUN2000',
-    logo: '/img/logos/huawei.png',
-    link: '/docs/integrations/huawei',
-    labels: ['Inverter', 'Solar', 'Huawei', 'RS485'],
-    description: 'Huawei SUN2000 single and three phase inverters'
-  },
-  {
-    title: 'Goodwe',
-    logo: '/img/logos/goodwe.png',
-    link: '/docs/integrations/goodwe',
-    labels: ['Inverter', 'Solar', 'Goodwe'],
-    description: 'Goodwe solar inverters'
-  },
-  {
-    title: 'Solis',
-    logo: '/img/logos/solis.png',
-    link: '/docs/integrations/solis',
-    labels: ['Inverter', 'Solar', 'Solis', 'RS485'],
-    description: 'Solis RHI and RAI series inverters'
-  },
-  {
-    title: 'Growatt SPH',
-    logo: '/img/logos/growatt.png',
-    link: '/docs/integrations/growattSPH',
-    labels: ['Inverter', 'Solar', 'Growatt', 'RS485'],
-    description: 'Growatt SPH single and three phase inverters'
-  },
-  {
-    title: 'Eastron Meter',
-    logo: '/img/logos/eastron.png',
-    link: '/docs/integrations/eastron_meter',
-    labels: ['Meter', 'Energy Monitoring', 'RS485', 'Eastron'],
-    description: 'Eastron single and three phase energy meters'
-  },
-  {
-    title: 'P1 Port',
-    logo: '/img/logos/p1-port.svg',
-    link: '/docs/integrations/p1-port',
-    labels: ['Meter', 'Digital Meter', 'P1', 'Energy Monitoring'],
-    description: 'Digital meter P1 port integration for electricity, gas, and water'
-  },
-  {
-    title: 'S1 Port',
-    logo: '/img/logos/s1-port.svg',
-    link: '/docs/integrations/s1-port',
-    labels: ['Meter', 'Digital Meter', 'S1', 'Energy Monitoring'],
-    description: 'Digital meter S1 port integration for main meter'
-  },
-];
-
-// Define label categories for better organization
-const LabelCategories = {
-  'Type': ['Inverter', 'Meter'],
-  'Brand': ['Huawei', 'Goodwe', 'Solis', 'Growatt', 'Eastron'],
-  'Technology': ['Solar', 'Energy Monitoring', 'RS485'],
-  'Port': ['P1', 'S1']
-};
+import {
+  getAllIntegrations,
+  getAllLabels,
+  filterIntegrationsByLabels,
+  LABEL_CATEGORIES,
+  type IntegrationItem
+} from '../hooks/useIntegrations';
 
 function IntegrationCard({title, logo, link, labels, description}: IntegrationItem) {
   return (
@@ -134,11 +73,54 @@ function LabelFilter({
   selectedLabels: string[];
   onToggleLabel: (label: string) => void
 }) {
+  // Only show labels that exist in our integrations
+  const availableLabels = labels.filter(label => 
+    getAllIntegrations().some(integration => integration.labels.includes(label))
+  );
+  
   return (
     <div style={{marginBottom: '1.5rem'}}>
       <h4 style={{marginBottom: '0.5rem', fontSize: '0.9rem', color: '#555'}}>{category}</h4>
       <div style={{display: 'flex', flexWrap: 'wrap', gap: '0.3rem'}}>
-        {labels.map((label, idx) => {
+        {availableLabels.map((label, idx) => {
+          const isSelected = selectedLabels.includes(label);
+          return (
+            <button
+              key={idx}
+              onClick={() => onToggleLabel(label)}
+              style={{
+                padding: '0.3rem 0.7rem',
+                backgroundColor: isSelected ? '#0070f3' : '#f0f0f0',
+                color: isSelected ? 'white' : '#555',
+                border: 'none',
+                borderRadius: '4px',
+                cursor: 'pointer',
+                fontSize: '0.8rem'
+              }}
+            >
+              {label}
+            </button>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+function AllLabelsFilter({ 
+  allLabels, 
+  selectedLabels, 
+  onToggleLabel 
+}: { 
+  allLabels: string[];
+  selectedLabels: string[];
+  onToggleLabel: (label: string) => void
+}) {
+  return (
+    <div style={{marginTop: '1.5rem', paddingTop: '1rem', borderTop: '1px solid #e0e0e0'}}>
+      <h4 style={{marginBottom: '0.5rem', fontSize: '0.9rem', color: '#555'}}>All Labels</h4>
+      <div style={{display: 'flex', flexWrap: 'wrap', gap: '0.3rem'}}>
+        {allLabels.map((label, idx) => {
           const isSelected = selectedLabels.includes(label);
           return (
             <button
@@ -164,18 +146,14 @@ function LabelFilter({
 }
 
 export default function IntegrationsPage(): ReactNode {
+  const allIntegrations = getAllIntegrations();
+  const allLabels = getAllLabels();
   const [selectedLabels, setSelectedLabels] = useState<string[]>([]);
   
-  // Get all unique labels
-  const allLabels: string[] = Array.from(
-    new Set(IntegrationsList.flatMap(integration => integration.labels))
-  ).sort();
-  
-  const filteredIntegrations = selectedLabels.length === 0
-    ? IntegrationsList
-    : IntegrationsList.filter(integration =>
-        selectedLabels.some(selectedLabel => integration.labels.includes(selectedLabel))
-      );
+  const filteredIntegrations = useMemo(
+    () => filterIntegrationsByLabels(allIntegrations, selectedLabels),
+    [selectedLabels]
+  );
   
   const handleToggleLabel = (label: string) => {
     if (selectedLabels.includes(label)) {
@@ -231,7 +209,7 @@ export default function IntegrationsPage(): ReactNode {
                   </div>
                 )}
                 
-                {Object.entries(LabelCategories).map(([category, labels]) => (
+                {Object.entries(LABEL_CATEGORIES).map(([category, labels]) => (
                   <LabelFilter
                     key={category}
                     category={category}
@@ -241,31 +219,11 @@ export default function IntegrationsPage(): ReactNode {
                   />
                 ))}
                 
-                <div style={{marginTop: '1.5rem', paddingTop: '1rem', borderTop: '1px solid #e0e0e0'}}>
-                  <h4 style={{marginBottom: '0.5rem', fontSize: '0.9rem', color: '#555'}}>All Labels</h4>
-                  <div style={{display: 'flex', flexWrap: 'wrap', gap: '0.3rem'}}>
-                    {allLabels.map((label, idx) => {
-                      const isSelected = selectedLabels.includes(label);
-                      return (
-                        <button
-                          key={idx}
-                          onClick={() => onToggleLabel(label)}
-                          style={{
-                            padding: '0.3rem 0.7rem',
-                            backgroundColor: isSelected ? '#0070f3' : '#f0f0f0',
-                            color: isSelected ? 'white' : '#555',
-                            border: 'none',
-                            borderRadius: '4px',
-                            cursor: 'pointer',
-                            fontSize: '0.8rem'
-                          }}
-                        >
-                          {label}
-                        </button>
-                      );
-                    })}
-                  </div>
-                </div>
+                <AllLabelsFilter
+                  allLabels={allLabels}
+                  selectedLabels={selectedLabels}
+                  onToggleLabel={handleToggleLabel}
+                />
               </div>
             </div>
             
@@ -273,7 +231,7 @@ export default function IntegrationsPage(): ReactNode {
               {selectedLabels.length > 0 && (
                 <div style={{marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '1rem'}}>
                   <span style={{color: '#666'}}>
-                    Showing {filteredIntegrations.length} of {IntegrationsList.length} integrations
+                    Showing {filteredIntegrations.length} of {allIntegrations.length} integrations
                   </span>
                 </div>
               )}

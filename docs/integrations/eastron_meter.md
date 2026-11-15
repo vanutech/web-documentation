@@ -1,4 +1,5 @@
 ---
+title: Eastron Meter
 sidebar_position: 6
 sidebar_custom_props: 
   img: eastron.png
