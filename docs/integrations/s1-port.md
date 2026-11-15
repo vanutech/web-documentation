@@ -1,5 +1,5 @@
 ---
-title: S1 Port mainmeter
+title: S1 Port Integration
 sidebar_position: 5
 sidebar_custom_props: 
   img: s1-port.svg
