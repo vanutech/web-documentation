@@ -20,74 +20,197 @@ if (!fs.existsSync(outputDir)) {
 }
 
 /**
- * Simple YAML frontmatter parser
- * Extracts key-value pairs from frontmatter
+ * Parse YAML frontmatter with support for nested objects and arrays
  */
-function parseFrontmatter(frontmatterText) {
-  const result = {};
-  const lines = frontmatterText.split('\n');
+function parseYamlFrontmatter(frontmatterText) {
+  const lines = frontmatterText.split('\n')
+    .filter(l => l.trim() !== '' && l.trim() !== '---');
   
-  let currentKey = null;
-  let currentValue = null;
-  let inMultiline = false;
-  let indentLevel = 0;
-  
-  for (const line of lines) {
-    const trimmed = line.trim();
-    
-    // Skip empty lines
-    if (!trimmed || trimmed === '---') continue;
-    
-    // Check for key-value pairs
-    const match = trimmed.match(/^([\w_][\w_-]*):\s*(.*)$/);
-    
-    if (match) {
-      // Save previous key-value if exists
-      if (currentKey) {
-        result[currentKey] = currentValue;
-      }
-      
-      currentKey = match[1];
-      currentValue = match[2].trim();
-      
-      // Handle multiline values (like arrays)
-      if (currentValue.startsWith('[') || currentValue.startsWith('{')) {
-        inMultiline = true;
-        indentLevel = line.search(/\S/); // Get indent level
-      }
-    } else if (inMultiline) {
-      // Continue multiline value
-      const lineIndent = line.search(/\S/);
-      if (lineIndent <= indentLevel && trimmed) {
-        // End of multiline
-        result[currentKey] = currentValue;
-        currentKey = null;
-        currentValue = null;
-        inMultiline = false;
-      } else if (trimmed) {
-        currentValue += '\n' + line.trimStart();
-      }
-    }
-  }
-  
-  // Save last key-value
-  if (currentKey) {
-    result[currentKey] = currentValue;
-  }
-  
-  return result;
+  return parseYamlLines(lines, 0, -1)[0];
 }
 
 /**
- * Parse labels array string to actual array
+ * Recursively parse YAML lines starting at a given line index
+ * baseIndent is the minimum indent level for this block
+ * Returns [parsedObject, nextLineIndex]
  */
-function parseLabels(labelsValue) {
-  if (!labelsValue) return [];
+function parseYamlLines(lines, startIndex, baseIndent) {
+  const result = {};
+  let i = startIndex;
   
-  // Remove brackets and split by commas
-  const clean = labelsValue.replace(/^[\["]|\]"?$/g, '').replace(/"\s*,\s*"/g, ',').replace(/,\s*/g, ',');
-  const items = clean.split(',').map(item => item.trim().replace(/^"|"$/g, ''));
-  return items.filter(item => item);
+  while (i < lines.length) {
+    const line = lines[i];
+    const trimmed = line.trim();
+    const indent = line.search(/\S/) || 0;
+    
+    // Skip empty lines
+    if (!trimmed) {
+      i++;
+      continue;
+    }
+    
+    // If this line's indent is less than or equal to baseIndent and we're not at the start,
+    // we've reached the end of this block
+    if (indent <= baseIndent && i > startIndex) {
+      break;
+    }
+    
+    // Check if this is a key-value pair
+    const match = trimmed.match(/^([\w_][\w_-]*):\s*(.*)$/);
+    
+    if (match) {
+      const key = match[1];
+      let value = match[2].trim();
+      
+      // Check if there's a next line that's indented more than this line (nested content)
+      const nextLine = lines[i + 1];
+      if (nextLine) {
+        const nextIndent = nextLine.search(/\S/) || 0;
+        if (nextIndent > indent) {
+          // This is an object - parse nested lines with new baseIndent
+          const [nestedResult, nextI] = parseYamlLines(lines, i + 1, indent);
+          result[key] = nestedResult;
+          i = nextI;
+          continue;
+        }
+      }
+      
+      // Parse the value (could be array, string, etc.)
+      result[key] = parseYamlValue(value);
+      i++;
+      continue;
+    }
+    
+    // If we get here without a match, skip the line
+    i++;
+  }
+  
+  return [result, i];
+}
+
+/**
+ * Parse a YAML value (string, array, or primitive)
+ */
+function parseYamlValue(value) {
+  if (!value) return value;
+  
+  // Check if it's an array
+  if (value.startsWith('[') && value.endsWith(']')) {
+    const arrayContent = value.slice(1, -1).trim();
+    return parseYamlArray(arrayContent);
+  }
+  
+  // Check if it's a quoted string
+  if ((value.startsWith('"') && value.endsWith('"')) || 
+      (value.startsWith("'") && value.endsWith("'"))) {
+    return value.slice(1, -1);
+  }
+  
+  // Check if it's a boolean
+  if (value.toLowerCase() === 'true') return true;
+  if (value.toLowerCase() === 'false') return false;
+  
+  // Check if it's a number
+  if (!isNaN(value) && !isNaN(parseFloat(value))) {
+    return Number(value);
+  }
+  
+  // It's a plain string
+  return value;
+}
+
+/**
+ * Parse a YAML array string into an array
+ * Handles: ["item1", "item2"] or [item1, item2]
+ */
+function parseYamlArray(arrayContent) {
+  if (!arrayContent) return [];
+  
+  // Try JSON.parse first
+  try {
+    const parsed = JSON.parse('[' + arrayContent + ']');
+    if (Array.isArray(parsed)) {
+      return parsed;
+    }
+  } catch (e) {
+    // Continue with manual parsing
+  }
+  
+  // Manual parsing
+  const items = [];
+  let current = '';
+  let inQuotes = false;
+  let quoteChar = null;
+  let depth = 0;
+  
+  for (let i = 0; i < arrayContent.length; i++) {
+    const char = arrayContent[i];
+    
+    // Handle escape sequences
+    if (char === '\\' && i + 1 < arrayContent.length) {
+      current += arrayContent[i + 1];
+      i++;
+      continue;
+    }
+    
+    // Handle quotes
+    if ((char === '"' || char === "'") && !inQuotes) {
+      inQuotes = true;
+      quoteChar = char;
+      continue;
+    }
+    
+    if (char === quoteChar && inQuotes) {
+      inQuotes = false;
+      quoteChar = null;
+      continue;
+    }
+    
+    // Handle nested brackets
+    if (char === '[' && !inQuotes) {
+      depth++;
+      current += char;
+      continue;
+    }
+    if (char === ']' && !inQuotes) {
+      if (depth > 0) {
+        depth--;
+        current += char;
+        continue;
+      }
+    }
+    
+    // Handle comma separator
+    if (char === ',' && !inQuotes && depth === 0) {
+      items.push(cleanArrayItem(current));
+      current = '';
+      continue;
+    }
+    
+    current += char;
+  }
+  
+  if (current) {
+    items.push(cleanArrayItem(current));
+  }
+  
+  return items;
+}
+
+/**
+ * Clean up an array item by removing quotes and trimming
+ */
+function cleanArrayItem(item) {
+  if (!item) return item;
+  let cleaned = item.trim();
+  
+  // Remove surrounding quotes
+  if ((cleaned.startsWith('"') && cleaned.endsWith('"')) ||
+      (cleaned.startsWith("'") && cleaned.endsWith("'"))) {
+    cleaned = cleaned.slice(1, -1);
+  }
+  
+  return cleaned;
 }
 
 /**
@@ -97,7 +220,7 @@ function extractMetadata(filePath) {
   const content = fs.readFileSync(filePath, 'utf8');
   
   // Extract frontmatter (between --- markers)
-  const frontmatterMatch = content.match(/^---[\s\S]*?---/);
+  const frontmatterMatch = content.match(/^---[\s\S]*?^---/m);
   
   if (!frontmatterMatch) {
     console.warn(`No frontmatter found in ${filePath}`);
@@ -110,13 +233,13 @@ function extractMetadata(filePath) {
     };
   }
   
-  const frontmatterText = frontmatterMatch[0].replace(/^---|---$/g, '').trim();
-  const frontmatter = parseFrontmatter(frontmatterText);
+  const frontmatterText = frontmatterMatch[0];
+  const frontmatter = parseYamlFrontmatter(frontmatterText);
   
   return {
     id: path.basename(filePath, '.md'),
     title: frontmatter.title || path.basename(filePath, '.md').replace(/-/g, ' '),
-    labels: parseLabels(frontmatter.labels),
+    labels: Array.isArray(frontmatter.labels) ? frontmatter.labels : [],
     sidebar_position: Number(frontmatter.sidebar_position) || 0,
     sidebar_custom_props: frontmatter.sidebar_custom_props || {}
   };
@@ -187,10 +310,12 @@ try {
     console.log(`  ${int.sidebar_position}. ${int.id}`);
     console.log(`     Title: ${int.title}`);
     console.log(`     Labels: [${int.labels.join(', ')}]`);
+    console.log(`     Image: ${int.sidebar_custom_props.img || 'none'}`);
     console.log('');
   });
   
 } catch (error) {
   console.error('Error extracting integration metadata:', error);
+  console.error(error.stack);
   process.exit(1);
 }

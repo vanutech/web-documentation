@@ -17,21 +17,8 @@ export interface IntegrationItem {
 }
 
 /**
- * Map from integration ID to logo path
- * This maps the markdown file ID to the actual logo file
- */
-const LOGO_MAP: Record<string, string> = {
-  'huawei': '/img/logos/huawei.png',
-  'goodwe': '/img/logos/goodwe.png',
-  'solis': '/img/logos/solis.png',
-  'growattSPH': '/img/logos/growatt.png',
-  'eastron_meter': '/img/logos/eastron.png',
-  'p1-port': '/img/logos/p1-port.svg',
-  's1-port': '/img/logos/s1-port.svg',
-};
-
-/**
  * Map from integration ID to description
+ * These descriptions are used in the integrations browse page
  */
 const DESCRIPTION_MAP: Record<string, string> = {
   'huawei': 'Huawei SUN2000 single and three phase inverters',
@@ -41,18 +28,21 @@ const DESCRIPTION_MAP: Record<string, string> = {
   'eastron_meter': 'Eastron single and three phase energy meters',
   'p1-port': 'Digital meter P1 port integration for electricity, gas, and water',
   's1-port': 'Digital meter S1 port integration for main meter',
+  'Solis_zatobox_meter': 'Solis zatobox meter for energy monitoring'
 };
 
 /**
  * Convert IntegrationMetadata to IntegrationItem
+ * Uses sidebar_custom_props.img for the logo path
  */
 function metadataToIntegrationItem(metadata: IntegrationMetadata): IntegrationItem {
   const id = metadata.id;
   
-  // Use custom props img if available, otherwise use the logo map
-  let logo = LOGO_MAP[id];
-  if (metadata.sidebar_custom_props?.img) {
-    logo = `/img/${metadata.sidebar_custom_props.img}`;
+  // Use the img from sidebar_custom_props, or fall back to a default
+  let logo = metadata.sidebar_custom_props?.img;
+  if (logo) {
+    // The img in sidebar_custom_props is just the filename, prepend /img/
+    logo = `/img/logos/${logo}`;
   }
   
   return {

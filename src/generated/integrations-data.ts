@@ -22,7 +22,9 @@ export const INTEGRATIONS_METADATA: IntegrationMetadata[] = [
       "RS485"
     ],
     "sidebar_position": 1,
-    "sidebar_custom_props": {}
+    "sidebar_custom_props": {
+      "img": "huawei.png"
+    }
   },
   {
     "id": "goodwe",
@@ -33,7 +35,9 @@ export const INTEGRATIONS_METADATA: IntegrationMetadata[] = [
       "Goodwe"
     ],
     "sidebar_position": 2,
-    "sidebar_custom_props": {}
+    "sidebar_custom_props": {
+      "img": "goodwe.png"
+    }
   },
   {
     "id": "solis",
@@ -45,7 +49,9 @@ export const INTEGRATIONS_METADATA: IntegrationMetadata[] = [
       "RS485"
     ],
     "sidebar_position": 3,
-    "sidebar_custom_props": {}
+    "sidebar_custom_props": {
+      "img": "solis.png"
+    }
   },
   {
     "id": "growattSPH",
@@ -57,7 +63,9 @@ export const INTEGRATIONS_METADATA: IntegrationMetadata[] = [
       "RS485"
     ],
     "sidebar_position": 4,
-    "sidebar_custom_props": {}
+    "sidebar_custom_props": {
+      "img": "growatt.png"
+    }
   },
   {
     "id": "p1-port",
@@ -69,7 +77,22 @@ export const INTEGRATIONS_METADATA: IntegrationMetadata[] = [
       "Energy Monitoring"
     ],
     "sidebar_position": 4,
-    "sidebar_custom_props": {}
+    "sidebar_custom_props": {
+      "img": "p1-port.svg"
+    }
+  },
+  {
+    "id": "Solis_zatobox_meter",
+    "title": "Solis zatobox meter",
+    "labels": [
+      "Energy Adapter",
+      "Solis",
+      "RS485"
+    ],
+    "sidebar_position": 4,
+    "sidebar_custom_props": {
+      "img": "solis.png"
+    }
   },
   {
     "id": "s1-port",
@@ -81,7 +104,9 @@ export const INTEGRATIONS_METADATA: IntegrationMetadata[] = [
       "Energy Monitoring"
     ],
     "sidebar_position": 5,
-    "sidebar_custom_props": {}
+    "sidebar_custom_props": {
+      "img": "s1-port.svg"
+    }
   },
   {
     "id": "eastron_meter",
@@ -93,7 +118,9 @@ export const INTEGRATIONS_METADATA: IntegrationMetadata[] = [
       "Eastron"
     ],
     "sidebar_position": 6,
-    "sidebar_custom_props": {}
+    "sidebar_custom_props": {
+      "img": "eastron.png"
+    }
   }
 ];
 

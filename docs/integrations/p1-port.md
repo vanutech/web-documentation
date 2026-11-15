@@ -1,6 +1,8 @@
 ---
 title: P1 Port Integrations
 sidebar_position: 4
+sidebar_custom_props: 
+  img: p1-port.svg
 labels: ["Meter", "Digital Meter", "P1", "Energy Monitoring"]
 ---
 

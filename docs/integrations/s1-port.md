@@ -1,6 +1,8 @@
 ---
 title: S1 Port mainmeter
 sidebar_position: 5
+sidebar_custom_props: 
+  img: s1-port.svg
 labels: ["Meter", "Digital Meter", "S1", "Energy Monitoring"]
 ---
 
