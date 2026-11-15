@@ -1,6 +1,7 @@
 ---
 title: P1 Port Integrations
 sidebar_position: 4
+labels: ["Meter", "Digital Meter", "P1", "Energy Monitoring"]
 ---
 
 

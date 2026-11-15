@@ -119,6 +119,11 @@ const config: Config = {
           position: 'left',
           sidebarId: 'integrationSidebar',
         },
+        {
+          to: '/integrations',
+          label: 'Browse Integrations',
+          position: 'left',
+        },
         { type: "docSidebar",
           label: 'Developer', 
           position: 'left',

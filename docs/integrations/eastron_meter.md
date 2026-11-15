@@ -2,6 +2,7 @@
 sidebar_position: 6
 sidebar_custom_props: 
   img: eastron.png
+labels: ["Meter", "Energy Monitoring", "RS485", "Eastron"]
 ---
 
 # Eastron meter

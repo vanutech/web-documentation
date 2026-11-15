@@ -1,6 +1,7 @@
 ---
 title: S1 Port mainmeter
 sidebar_position: 5
+labels: ["Meter", "Digital Meter", "S1", "Energy Monitoring"]
 ---
 
 # S1 Port Digital Meter Integration

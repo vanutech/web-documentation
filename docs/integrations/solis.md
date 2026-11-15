@@ -2,6 +2,7 @@
 sidebar_position: 3
 sidebar_custom_props: 
   img: solis.png
+labels: ["Inverter", "Solar", "Solis", "RS485"]
 ---
 
 # Solis

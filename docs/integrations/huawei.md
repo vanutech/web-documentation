@@ -3,6 +3,7 @@ title: Huawei SUN2000
 sidebar_position: 1
 sidebar_custom_props: 
   img: huawei.png
+labels: ["Inverter", "Solar", "Huawei", "RS485"]
 ---
 
 

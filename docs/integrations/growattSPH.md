@@ -2,6 +2,7 @@
 sidebar_position: 4
 sidebar_custom_props: 
   img: growatt.png
+labels: ["Inverter", "Solar", "Growatt", "RS485"]
 ---
 
 # Growatt SPH
