@@ -58,7 +58,7 @@ Zatobox energy adapter can be connected in several ways. Below are step by step 
 
 #### P1 port to inverter
 
-Use the p1 cable and short rj45 splitter. 
+Use the p1 cable and short rj45 splitter. More information see **[P1 integration](/docs/integrations/p1-port)**.
 
 - First Connect the P1 cable to the p1 port on your digital meter and the other side to the rj45 splitter. 
 
@@ -68,7 +68,7 @@ Use the p1 cable and short rj45 splitter.
 
 #### S1 port to inverter
 
-Use the S1 data cable, P1 power cable, the long rj45 splitter and short rj45 splitter. 
+Use the S1 data cable, P1 power cable, the long rj45 splitter and short rj45 splitter. More information see **[S1 integration](/docs/integrations/s1-port)**.
 
 - First Connect the S1 data cable and the P1 power cable to the digital meter and the other side to the long rj45 splitter. Connect the RJ45 splitter out to the short rj45 splitter.
 
